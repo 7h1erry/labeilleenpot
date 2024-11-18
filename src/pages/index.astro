@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="accueil - l'abeille en pot">
+	<div class="hero">
+		<p class="subtitle">À une époque où l'apiculture est en grande difficulté à cause des pesticides, des maladies et des nouveaux prédateurs, je me suis décidé à élever quelques colonies citadines. Aujourd'hui mes abeilles se portent si bien que je n'arrive pas à tout consommer ce qu'elles produisent.</p>
+		<div class="logo-container">
+			<img src="/logo.svg" alt="l'abeille en pot" class="logo" />
+		</div>
+		<p class="subtitle-bottom">Ce site me permet de le valoriser et de partager ce miel de l'abeille en pot.</p>
+		<a href="/shop" class="shop-link">découvrir nos miels</a>
+	</div>
+
+	<div class="features">
+		<div class="feature-card">
+			<h3>production locale</h3>
+			<p class="feature-text">qualité unique de notre miel urbain, récolté en Île-de-France<br>traçabilité garantie, sans intermédiaire</p>
+		</div>
+		<div class="feature-card">
+			<h3>respect des abeilles</h3>
+			<p class="feature-text">soutenez une production respectueuse<br>5 ruches, la qualité plutôt que la quantité</p>
+		</div>
+		<div class="feature-card">
+			<h3>qualité artisanale</h3>
+			<p class="feature-text">le miel d'un apiculteur passionné<br>pas compromis sur le goût, sans mélanges de miels étrangers</p>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.hero {
+		text-align: center;
+		margin-bottom: 4rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.logo-container {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin: 2rem 0;
+	}
+	.logo {
+		width: 400px;
+		max-width: 90%;
+		height: auto;
+	}
+	.subtitle, .subtitle-bottom {
+		font-family: 'Lato', sans-serif;
+		font-size: 16px;
+		color: white;
+		max-width: 800px;
+		line-height: 1.8;
+	}
+	.subtitle-bottom {
+		margin-bottom: 2rem;
+	}
+	.features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+	.feature-card {
+		background: var(--card-bg);
+		padding: 2rem;
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	.feature-card h3 {
+		margin-bottom: 0.75rem;
+		font-size: 1.3rem;
+	}
+	.feature-text {
+		background: var(--gilbert-gradient);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 300% 300%;
+		animation: gradient 8s ease infinite;
+		line-height: 1.4;
+		font-size: 0.9rem;
+	}
+	.shop-link {
+		color: var(--text-hover);
+		font-weight: 400;
+		padding: 0.5rem 1.5rem;
+		border: 1px solid var(--text-hover);
+		border-radius: 50px;
+		transition: all 0.3s ease;
+		background: transparent;
+		text-decoration: none;
+		font-size: 1.1rem;
+		font-family: 'Raleway', sans-serif;
+	}
+	.shop-link:hover {
+		background: var(--text-hover);
+		color: var(--bg-color);
+		transform: scale(1.05);
+	}
+
+	@media (max-width: 768px) {
+		.subtitle, .subtitle-bottom {
+			font-size: 16px;
+			line-height: 1.6;
+		}
+	}
+</style>

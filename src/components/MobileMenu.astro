@@ -1,0 +1,199 @@
+---
+const menuItems = [
+  { title: "l'abeille", path: "/abeille", subItems: [
+    { title: "depuis 100 millions d'années", path: "/abeille/histoire" },
+    { title: "l'apiculture urbaine", path: "/abeille/urbaine" }
+  ]},
+  { title: "le miel", path: "/miel", subItems: [
+    { title: "le miel, un alicament de plaisir", path: "/miel/alicament" },
+    { title: "la naturelle cristallisation", path: "/miel/cristallisation" }
+  ]},
+  { title: "le shop", path: "/shop", highlight: true },
+  { title: "accords", path: "/accords" }
+];
+---
+
+<div class="mobile-menu">
+  <button id="menuToggle" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  
+  <div class="menu-content" id="menuContent">
+    <nav>
+      {menuItems.map(item => (
+        <div class="menu-item">
+          {item.subItems ? (
+            <>
+              <div class="menu-link">
+                <span>{item.title}</span>
+                <span class="arrow">▾</span>
+              </div>
+              <div class="submenu">
+                {item.subItems.map(subItem => (
+                  <a href={subItem.path}>{subItem.title}</a>
+                ))}
+              </div>
+            </>
+          ) : (
+            <a href={item.path} class={item.highlight ? 'highlight' : ''}>
+              {item.title}
+            </a>
+          )}
+        </div>
+      ))}
+    </nav>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const menuContent = document.getElementById('menuContent');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  // Toggle menu open/close
+  menuToggle?.addEventListener('click', () => {
+    menuContent?.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Handle submenu toggles
+  menuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const menuItem = link.closest('.menu-item');
+      
+      // Close other open submenus
+      document.querySelectorAll('.menu-item').forEach(item => {
+        if (item !== menuItem) {
+          item.classList.remove('open');
+        }
+      });
+      
+      menuItem?.classList.toggle('open');
+    });
+  });
+
+  // Close menu when clicking a direct link
+  document.querySelectorAll('.menu-item > a, .submenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuContent?.classList.remove('active');
+      menuToggle?.classList.remove('active');
+    });
+  });
+</script>
+
+<style>
+  .mobile-menu {
+    display: none;
+  }
+
+  #menuToggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 200;
+  }
+
+  #menuToggle span {
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--text-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  #menuToggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(0.5rem, 0.5rem);
+  }
+
+  #menuToggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menuToggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+  }
+
+  .menu-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-color);
+    padding: 6rem 2rem 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+  .menu-content.active {
+    transform: translateX(0);
+  }
+
+  .menu-item {
+    margin-bottom: 1rem;
+  }
+
+  .menu-item a,
+  .menu-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    color: var(--text-color);
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .menu-link {
+    padding-right: 1rem;
+  }
+
+  .menu-item a.highlight {
+    color: var(--text-hover);
+    font-weight: 500;
+  }
+
+  .arrow {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-item.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  .submenu {
+    display: none;
+    padding-left: 1rem;
+  }
+
+  .menu-item.open .submenu {
+    display: block;
+  }
+
+  .submenu a {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-menu {
+      display: block;
+    }
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+---
+
+<div class="cursor-container">
+  <div class="bee bee-1"></div>
+  <div class="bee bee-2"></div>
+</div>
+
+<script>
+  const cursor1 = document.querySelector('.bee-1');
+  const cursor2 = document.querySelector('.bee-2');
+  let mouseX = 0;
+  let mouseY = 0;
+  let cursor1X = 0;
+  let cursor1Y = 0;
+  let cursor2X = 0;
+  let cursor2Y = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    // Animation fluide pour la première abeille
+    const dx1 = mouseX - cursor1X;
+    const dy1 = mouseY - cursor1Y;
+    cursor1X += dx1 * 0.2;
+    cursor1Y += dy1 * 0.2;
+    cursor1?.style.setProperty('--x', `${cursor1X}px`);
+    cursor1?.style.setProperty('--y', `${cursor1Y}px`);
+
+    // Animation fluide pour la deuxième abeille avec délai
+    const dx2 = cursor1X - cursor2X;
+    const dy2 = cursor1Y - cursor2Y;
+    cursor2X += dx2 * 0.1;
+    cursor2Y += dy2 * 0.1;
+    cursor2?.style.setProperty('--x', `${cursor2X}px`);
+    cursor2?.style.setProperty('--y', `${cursor2Y}px`);
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+<style>
+  .cursor-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .bee {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s ease;
+  }
+
+  .bee-1 {
+    width: 8px;
+    height: 8px;
+    background: var(--text-hover);
+    transform: translate(calc(var(--x) - 4px), calc(var(--y) - 4px));
+    box-shadow: 0 0 10px var(--text-hover);
+  }
+
+  .bee-2 {
+    width: 4px;
+    height: 4px;
+    background: var(--text-color);
+    transform: translate(calc(var(--x) - 2px), calc(var(--y) - 2px));
+    box-shadow: 0 0 8px var(--text-color);
+  }
+
+  @media (max-width: 768px) {
+    .cursor-container {
+      display: none;
+    }
+  }
+</style>

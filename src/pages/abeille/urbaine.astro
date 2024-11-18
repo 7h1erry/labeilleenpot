@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="l'apiculture urbaine - miel artisanal">
+	<h1 class="page-title">l'apiculture urbaine</h1>
+	<div class="content">
+		<div class="text-section">
+			<p>Contre toute attente, les abeilles ont fait des villes un de leurs terrains de butinage préférés. Un phénomène qui s'explique par des températures urbaines plus clémentes et par une période de floraison plus longue grâce aux multiples espèces ornementales qui y fleurissent toute l'année.</p>
+
+			<p>Autre surprise : les villes se révèlent être un terrain d'une formidable variété végétale. « Selon les quartiers où sont posées nos ruches, nous obtenons par exemple un miel mentholé à dominante de tilleul, ou plus marqué par les ronces »</p>
+
+			<p>Et la pollution ? Là encore, l'abeille des villes est souvent mieux lotie que celle des champs. Pour peu que le service des espaces verts utilise des traitements naturels, elle échappe à ses pires ennemis que sont les engrais et les insecticides.</p>
+
+			<p class="citation">extraits de l'article du Figaro du 19 mai 2009 par Jean-Bernard Litzler</p>
+
+			<div class="cta-container">
+				<a href="/shop" class="shop-link">découvrir nos miels</a>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-title {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 300;
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.content {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.text-section {
+		font-family: 'Lato', sans-serif;
+		font-size: 16px;
+		line-height: 1.8;
+		color: white;
+	}
+
+	.text-section p {
+		margin-bottom: 1.5rem;
+	}
+
+	.citation {
+		font-style: italic;
+		font-size: 14px;
+		opacity: 0.8;
+		text-align: right;
+		margin-top: 2rem;
+	}
+
+	.cta-container {
+		display: flex;
+		justify-content: center;
+		margin-top: 3rem;
+	}
+
+	.shop-link {
+		color: var(--text-hover);
+		font-weight: 400;
+		padding: 0.5rem 1.5rem;
+		border: 1px solid var(--text-hover);
+		border-radius: 50px;
+		transition: all 0.3s ease;
+		background: transparent;
+		text-decoration: none;
+		font-size: 1.1rem;
+		font-family: 'Raleway', sans-serif;
+	}
+
+	.shop-link:hover {
+		background: var(--text-hover);
+		color: var(--bg-color);
+		transform: scale(1.05);
+	}
+
+	@media (max-width: 768px) {
+		.content {
+			padding: 0 1.5rem;
+		}
+	}
+</style>

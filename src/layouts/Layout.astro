@@ -1,0 +1,379 @@
+---
+import MobileMenu from '../components/MobileMenu.astro';
+import CursorAnimation from '../components/CursorAnimation.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="l'abeille en pot - miel urbain artisanal" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Lato:wght@300;400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+		<link href="https://fonts.cdnfonts.com/css/gilbert" rel="stylesheet">
+		<title>{title}</title>
+	</head>
+	<body>
+		<CursorAnimation />
+		<nav>
+			<div class="nav-container">
+				<a href="/" class="logo">
+					<span>l'abeille en pot</span>
+				</a>
+				<div class="nav-links desktop-only">
+					<div class="dropdown">
+						<a href="/abeille" class="nav-link with-arrow">
+							l'abeille
+							<span class="arrow">▾</span>
+						</a>
+						<div class="dropdown-content">
+							<a href="/abeille/histoire" class="dropdown-link">depuis 100 millions d'années</a>
+							<a href="/abeille/urbaine" class="dropdown-link">l'apiculture urbaine</a>
+						</div>
+					</div>
+					<div class="dropdown">
+						<a href="/miel" class="nav-link with-arrow">
+							le miel
+							<span class="arrow">▾</span>
+						</a>
+						<div class="dropdown-content">
+							<a href="/miel/alicament" class="dropdown-link">le miel, un alicament de plaisir</a>
+							<a href="/miel/cristallisation" class="dropdown-link">la naturelle cristallisation</a>
+						</div>
+					</div>
+					<a href="/shop" class="shop-link">le shop</a>
+					<a href="/accords" class="nav-link">accords</a>
+				</div>
+				<MobileMenu />
+			</div>
+		</nav>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<p class="footer-text">l'abeille en pot est une marque réservée auprès de l'Institut National de la Propriété Industrielle (INPI) sous le numéro national 4645888</p>
+		</footer>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--bg-color: #1a4657;
+		--text-color: #32CD32;
+		--text-hover: #00FF00;
+		--accent-color: #90EE90;
+		--card-bg: rgba(255, 255, 255, 0.05);
+		--gilbert-gradient: linear-gradient(
+			45deg,
+			#FF6B6B,
+			#4ECDC4,
+			#45B7D1,
+			#96E6B3,
+			#FFD93D
+		);
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		-webkit-tap-highlight-color: transparent;
+	}
+	::selection {
+		background: var(--text-hover);
+		color: var(--bg-color);
+	}
+	body {
+		font-family: 'Poppins', sans-serif;
+		background: var(--bg-color);
+		color: var(--text-color);
+		line-height: 1.6;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		font-weight: 300;
+		overflow-x: hidden;
+		cursor: none;
+	}
+	nav {
+		background: rgba(0, 0, 0, 0.15);
+		backdrop-filter: blur(10px);
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	}
+	.nav-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.nav-links {
+		display: flex;
+		gap: 2.5rem;
+		align-items: center;
+	}
+	.logo {
+		display: flex;
+		align-items: center;
+		font-size: 1.1rem;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 200;
+		letter-spacing: 1px;
+		z-index: 200;
+		background: var(--gilbert-gradient);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 300% 300%;
+		animation: gradient 8s ease infinite;
+		text-decoration: none;
+	}
+	.nav-link {
+		color: var(--text-color);
+		text-decoration: none;
+		transition: all 0.3s ease;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 300;
+		font-size: 1.1rem;
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		white-space: nowrap;
+		background: var(--gilbert-gradient);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 300% 300%;
+		animation: gradient 8s ease infinite;
+		user-select: none;
+		position: relative;
+	}
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: var(--text-hover);
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.3s ease;
+	}
+	.nav-link:hover::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+	.nav-link:hover {
+		transform: scale(1.05);
+	}
+	.with-arrow {
+		position: relative;
+		padding-right: 1.2rem;
+	}
+	.arrow {
+		font-size: 0.8em;
+		transition: transform 0.3s ease;
+	}
+	.dropdown:hover .arrow {
+		transform: rotate(180deg);
+	}
+	.shop-link {
+		color: var(--text-hover) !important;
+		font-weight: 400;
+		padding: 0.5rem 1.5rem;
+		border: 1px solid var(--text-hover);
+		border-radius: 50px;
+		transition: all 0.3s ease;
+		background: transparent !important;
+		-webkit-text-fill-color: var(--text-hover) !important;
+		text-decoration: none;
+		font-size: 1.1rem;
+		font-family: 'Raleway', sans-serif;
+	}
+	.shop-link:hover {
+		background: var(--text-hover) !important;
+		color: var(--bg-color) !important;
+		-webkit-text-fill-color: var(--bg-color) !important;
+		transform: scale(1.05);
+	}
+	.dropdown {
+		position: relative;
+		padding: 0.5rem 0;
+	}
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--bg-color);
+		min-width: 280px;
+		border-radius: 8px;
+		padding: 0.8rem;
+		box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.05);
+	}
+	.dropdown-content::before {
+		content: '';
+		position: absolute;
+		top: -5px;
+		left: 50%;
+		transform: translateX(-50%);
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 5px solid var(--bg-color);
+	}
+	.dropdown:hover .dropdown-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		animation: fadeIn 0.3s ease;
+	}
+	.dropdown-link {
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		transition: all 0.2s ease;
+		font-size: 0.95rem;
+		color: var(--text-color);
+		text-decoration: none;
+		font-family: 'Raleway', sans-serif;
+		white-space: nowrap;
+		position: relative;
+		overflow: hidden;
+	}
+	.dropdown-link::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: var(--text-hover);
+		opacity: 0;
+		transform: translateX(-100%);
+		transition: all 0.3s ease;
+	}
+	.dropdown-link:hover::before {
+		opacity: 0.1;
+		transform: translateX(0);
+	}
+	.dropdown-link:hover {
+		color: var(--text-hover);
+		transform: scale(1.05);
+		padding-left: 1.5rem;
+	}
+	main {
+		flex: 1;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 3rem 1rem;
+		width: 100%;
+	}
+	h1, h2, h3 {
+		font-family: 'Gilbert', sans-serif;
+		font-weight: 300;
+		background: var(--gilbert-gradient);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 300% 300%;
+		animation: gradient 8s ease infinite;
+		user-select: none;
+	}
+	h1 {
+		font-size: 2.5rem;
+		margin-bottom: 2rem;
+		letter-spacing: -0.5px;
+		text-align: center;
+	}
+	h2 {
+		font-weight: 400;
+		text-align: center;
+	}
+	.card {
+		background: var(--card-bg);
+		border-radius: 12px;
+		padding: 2rem;
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.05);
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	footer {
+		text-align: center;
+		padding: 2rem;
+		background: rgba(0, 0, 0, 0.15);
+		backdrop-filter: blur(10px);
+		border-top: 1px solid rgba(255, 255, 255, 0.05);
+	}
+	.footer-text {
+		font-size: 0.8rem;
+		opacity: 0.7;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(-10px) translateX(-50%);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) translateX(-50%);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.desktop-only {
+			display: none;
+		}
+		
+		h1 {
+			font-size: 2rem;
+			text-align: center;
+		}
+		
+		.card {
+			padding: 1.5rem;
+		}
+		
+		main {
+			padding: 2rem 1rem;
+		}
+
+		body {
+			cursor: auto;
+		}
+	}
+
+	@media (min-width: 769px) {
+		.mobile-menu {
+			display: none;
+		}
+	}
+</style>

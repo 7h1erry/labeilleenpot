@@ -1,0 +1,133 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="l'abeille - miel artisanal">
+	<h1 class="page-title">l'abeille</h1>
+	<div class="content">
+		<div class="text-section">
+			<p>L'abeille appartient à l'ordre des hyménoptères, leur nom provient des ailes membraneuses que la plupart des insectes hyménoptères portent par paires. Le mot vient du grec hymên, « mariage »,  et ptéron, « aile ». Cela vient du fait qu'il existe des crochets sur la nervure antérieure des ailes postérieures, permettant à celles-ci d'être couplées avec les ailes antérieures. En Europe, l'espèce la  plus connue est Apis mellifera, famille des Apoidea.  Sur plus de 20 000 espèces recensées, la majorité ne produit pas de miel.</p>
+
+			<p>L'espérance de vie des ouvrières varie selon les saisons : de 15 à 48 jours en été et 170 à 243 jours pour les abeilles d'hiver.</p>
+
+			<div class="lifecycle">
+				<div class="stage">
+					<h3>1-2 jours</h3>
+					<p>Les 2 premiers jours de sa vie, l'abeille nettoie les cellules pour la ponte, débarrasse la ruche des déchets et des cadavres, assurant ainsi un état sanitaire optimal.</p>
+				</div>
+
+				<div class="stage">
+					<h3>3-15 jours</h3>
+					<p>Du 3ème au 5ème jour et parfois jusqu'à 15 jours, elle inspecte puis nourrit le couvain avec de la gelée royale, du miel et du pollen, en les distribuant sélectivement en fonction de l'âge des larves ou dans le but de créer des reines.</p>
+				</div>
+
+				<div class="stage">
+					<h3>10 jours</h3>
+					<p>A partir du 10ème jour, les glandes nourricières régressent tandis que les glandes cirières de l'abdomen se développent. L'abeille devient bâtisseuse. Les cellules des rayons, utilisées pour stocker les réserves de miels ou de pollens et abriter le couvain, sont élaborées en groupe (6 heures de travail pour 100 abeilles par cellule), les réparations et operculations étant opérées par des individus.</p>
+				</div>
+
+				<div class="stage">
+					<h3>15 jours</h3>
+					<p>A 15 jours, lorsque les glandes cirières s'atrophient, l'abeille devient receveuse et manutentionnaire ; c'est elle qui va aspirer le nectar régurgité par la butineuse (trophallaxie) puis le déshydrater pour le transformer en miel. Quant au pollen, il est déposé en pelotes par les butineuses et prélevé par les manutentionnaires qui l'humidifient avec de la salive et du miel régurgité pour le tasser ensuite au fond des cellules.</p>
+				</div>
+
+				<div class="stage">
+					<h3>18 jours</h3>
+					<p>A 18 jours, l'abeille commence à sortir de la ruche pour la ventiler. Elle se place à l'entrée du trou de vol et bat des ailes. Cette ventilation permet de réguler la température et d'assurer la survie de la colonie dans de bonnes conditions. Si la température du couvain est anormalement élevée, les ventileuses font comprendre aux butineuses qu'il faut apporter de l'eau pour refroidir l'atmosphère. Un tel comportement montre à quel point les besoins de la ruche commandent l'activité des abeilles.</p>
+				</div>
+
+				<div class="stage">
+					<h3>15-20 jours</h3>
+					<p>Entre son 15ème et 20ème jour, l'abeille assure la surveillance à l'entrée de la ruche et devient gardienne. Son rôle consiste à éviter le pillage des réserves par une abeille n'appartenant pas à la colonie. En cas de danger, la gardienne prévient ses congénères en sécrétant une phéromone d'alarme puis, cambrée sur ses 4 pattes arrière, mandibules en avant, elle prend sa posture de défense.</p>
+				</div>
+
+				<div class="stage">
+					<h3>Butineuse</h3>
+					<p>A 2 semaines, l'abeille effectue ses premiers vols de repérage hors de la ruche. Une semaine plus tard et jusqu'à sa mort, elle devient butineuse. Une ruche peut comprendre jusqu'à 30 000 butineuses. Récoltant tantôt le pollen tantôt le nectar, elle ne mélange pas les produits de sa récolte ; jamais au cours d'un même voyage, elle ne butine des fleurs appartenant à des espèces différentes. Dans une journée, une abeille domestique peut butiner 700 fleurs en moyenne.</p>
+				</div>
+			</div>
+
+			<div class="cta-container">
+				<a href="/abeille/histoire" class="text-button">découvrir leur histoire</a>
+				<a href="/abeille/urbaine" class="text-button">l'apiculture urbaine</a>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-title {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 300;
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.content {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.text-section {
+		font-family: 'Lato', sans-serif;
+		font-size: 16px;
+		line-height: 1.8;
+		color: white;
+	}
+
+	.text-section p {
+		margin-bottom: 1.5rem;
+	}
+
+	.lifecycle {
+		display: grid;
+		gap: 2rem;
+		margin: 3rem 0;
+	}
+
+	.stage {
+		background: var(--card-bg);
+		padding: 1.5rem;
+		border-radius: 8px;
+		border: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.stage h3 {
+		font-family: 'Raleway', sans-serif;
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+		color: var(--text-hover);
+	}
+
+	.stage p {
+		margin-bottom: 0;
+	}
+
+	.cta-container {
+		display: flex;
+		gap: 2rem;
+		margin-top: 3rem;
+		justify-content: center;
+	}
+
+	.text-button {
+		color: var(--text-hover);
+		text-decoration: none;
+		font-weight: 400;
+		transition: all 0.3s ease;
+		font-family: 'Raleway', sans-serif;
+	}
+
+	.text-button:hover {
+		opacity: 0.8;
+	}
+
+	@media (max-width: 768px) {
+		.cta-container {
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+		}
+	}
+</style>

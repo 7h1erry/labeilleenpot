@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="le miel - miel artisanal">
+	<h1 class="page-title">le miel</h1>
+	<div class="content">
+		<div class="text-section">
+			<p>L'élaboration du miel commence dès le vol de retour vers la ruche dans le jabot de l'ouvrière.</p>
+
+			<p>L'enzyme appelée invertase, est ajouté au nectar. Il se produit alors une réaction chimique : l'hydrolyse du saccharose qui donne du glucose et du fructose.</p>
+
+			<p>Arrivée dans la ruche, l'abeille butineuse régurgite le nectar à une receveuse par trophallaxie, qui, à son tour, régurgitera et ré-ingurgitera ce nectar riche en eau, en le mêlant à de la salive et à des sucs digestifs, ayant pour effet de compléter le processus de digestion des sucres. Les trophallaxie sont nécessaires à la fabrication du miel et sont courantes chez les hyménoptères sociaux (fourmis, abeilles,...) qui possèdent un estomac séparé, le jabot social, dont le contenu est réservé aux trophallaxies. La trophallaxie permet aussi d'échanger des informations sur une source de nourriture.</p>
+
+			<p>Une fois stocké dans les alvéoles, le miel est déshydraté par une ventilation longue et énergique de la part précisément des ouvrières ventileuses. La chaleur de la ruche ainsi que les ouvrières ventileuses, qui peuvent entretenir un courant d'air pendant 20 minutes dans la ruche, provoquent l'évaporation de l'eau. Il arrive à maturité lorsque sa teneur en eau devient inférieure à 18% ; il est alors emmagasiné dans d'autres alvéoles qui seront operculés une fois remplis. Si le fructose reste liquide (plus abondant dans le miel de robinier dit "faux-acacia", vendu comme miel d'acacia), le glucose, lui, peut se figer.</p>
+
+			<p>Une analyse pollinique de 2023, réalisée sur un échantillon d'abeille en pot, par Naturalim France Miel, laboratoire d'expertise des miels, n'y a trouvé aucun résidu chimique. Les pollens dominants étaient ceux de châtaigniers et de tilleuls.</p>
+
+			<div class="cta-container">
+				<a href="/miel/alicament" class="text-button">propriétés du miel</a>
+				<a href="/miel/cristallisation" class="text-button">comprendre la cristallisation</a>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-title {
+		font-family: 'Raleway', sans-serif;
+		font-weight: 300;
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.content {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.text-section {
+		font-family: 'Lato', sans-serif;
+		font-size: 16px;
+		line-height: 1.8;
+		color: white;
+	}
+
+	.text-section p {
+		margin-bottom: 1.5rem;
+	}
+
+	.cta-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		justify-content: center;
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.text-button {
+		color: var(--text-hover);
+		text-decoration: none;
+		font-weight: 400;
+		transition: all 0.3s ease;
+		font-family: 'Raleway', sans-serif;
+	}
+
+	.text-button:hover {
+		opacity: 0.8;
+	}
+
+	@media (max-width: 768px) {
+		.content {
+			padding: 0 1.5rem;
+		}
+
+		.cta-container {
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+		}
+	}
+</style>
